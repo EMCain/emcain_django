@@ -16,6 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from emcain import views
+
 urlpatterns = [
+    # admin
     url(r'^admin/', admin.site.urls),
+
+    # emcain
+    url(r'^$', views.index),
 ]
