@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <a href="{{ proj.url }}">
+    {% if proj.is_demo %}
+        Demo
+    {% else %}
+        Project Site
+    {% endif %}
+    </a>
+
+    <p>Skills: {{ proj.skill }}</p>
+
+    <p>{{ proj.description }}</p>
+
+    <div class="screenshots">
+    {% for image in imgs %}
+        <img src="{{ image.url }}"/>
+    {% endfor %}
+
+    </div>
+{% endblock %}

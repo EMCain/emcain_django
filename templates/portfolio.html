@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <ul>
+        {% for proj in projects %}
+        <li>
+            <a href="/projects/{{ proj.id }}">{{ proj.name }}</a> - {{ proj.description }} | Skills: {{ proj.skill }}
+        </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

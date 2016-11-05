@@ -2,14 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ title }} | Emily Cain, Software Developer</title>
 </head>
 <body>
-<h4>A navbar will go here.</h4>
+<h4>|
+    {% for key, value in nav.items %}
+        <a href="{{ value }}">{{ key }}</a> |
+    {% endfor %}
+</h4>
+<h1>
+    {% if title == "Home" %}
+        Emily Cain
+    {% else %}
+        {{ title }}
+    {% endif %}
+</h1>
 
 {% block content %}
 {% endblock %}
 
-<footer>&copy; 2016 Emily Cain</footer>
+<footer>&copy; 2016 Emily Cain | <a href="https://www.github.com/emcain/emcain_django">Source</a></footer>
 </body>
 </html>

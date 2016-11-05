@@ -2,12 +2,14 @@
 
 {% block content %}
 
-    <p>Here is some content for the index page.</p>
+    <h2>Software Developer based in Portland, OR.</h2>
 
     <ul>
+        {% for skill in skills %}
         <li>
-            A list of projects will go here.
+            {{ skill.name }} - {{ skill.description }}
         </li>
+        {% endfor %}
     </ul>
 
 {% endblock %}
