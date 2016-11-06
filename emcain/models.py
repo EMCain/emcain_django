@@ -18,16 +18,28 @@ class Entry(models.Model):
 class Skill(Entry):
     icon_url = models.URLField()
 
+    def get_projects(self):
+        projects = []
+        for ps in ProjectSkill.objects.filter(skill=self):
+            projects.append(ps.project)
+        return projects
 
 class Project(Entry):
     start_date = models.DateField()
     end_date = models.DateField(null=True, blank=True)  # display null as ongoing
-    # https://github.com/niwinz/djorm-pgarray
-    # http://dba.stackexchange.com/questions/60132/foreign-key-constraint-on-array-member
-    # skill_ids = djorm_pgarray.fields.IntegerArrayField(default=[])
-    skill = models.ForeignKey('Skill', null=True, blank=True)
     is_demo = models.BooleanField(default=False)
 
+    def get_skills(self):
+        skills = []
+        for ps in ProjectSkill.objects.filter(project=self):
+            skills.append(ps.skill)
+        return skills
+
+class ProjectSkill(models.Model):
+    project = models.ForeignKey('Project')
+    skill = models.ForeignKey('Skill')
 
 class ProjectImage(Entry):
     project = models.ForeignKey('Project')
+
+

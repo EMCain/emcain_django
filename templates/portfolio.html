@@ -5,7 +5,12 @@
     <ul>
         {% for proj in projects %}
         <li>
-            <a href="/projects/{{ proj.id }}">{{ proj.name }}</a> - {{ proj.description }} | Skills: {{ proj.skill }}
+            <a href="/projects/{{ proj.id }}">{{ proj.name }}</a> - {{ proj.description }} | Skills:
+            {% for skill in proj.get_skills %}
+                {% if not forloop.first %},
+                {% endif %}
+                {{ skill.name }}
+            {% endfor %}
         </li>
         {% endfor %}
     </ul>

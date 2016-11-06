@@ -2,12 +2,17 @@
 
 {% block content %}
 
-    <h2>Software Developer based in Portland, OR.</h2>
+    <h2>Software Developer based in Portland, OR</h2>
 
     <ul>
         {% for skill in skills %}
         <li>
-            {{ skill.name }} - {{ skill.description }}
+            {{ skill.name }} - {{ skill.description }} | Projects:
+            {% for proj in skill.get_projects %}
+                {% if not forloop.first %},
+                {% endif %}
+                <a href="/projects/{{ proj.id }}">{{ proj.name }}</a>
+            {% endfor %}
         </li>
         {% endfor %}
     </ul>

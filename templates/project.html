@@ -10,7 +10,13 @@
     {% endif %}
     </a>
 
-    <p>Skills: {{ proj.skill }}</p>
+    <h3>Skills:
+        {% for skill in proj.get_skills %}
+            {% if not forloop.first %},
+            {% endif %}
+            {{ skill.name }}
+        {%  endfor %}
+    </h3>
 
     <p>{{ proj.description }}</p>
 
