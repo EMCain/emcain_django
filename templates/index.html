@@ -1,13 +1,19 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block head %}
+    <script src="{% static 'emcain/js/skills-list.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 
     <h2>Software Developer based in Portland, OR</h2>
 
     <ul class="skills-list">
         {% for skill in skills %}
-        <li data-index="{{ forloop.counter }}">
-            <div class="skill-name"><span> + </span>{{ skill.name }}</div>
+        <li>
+            <div class="skill-name" onclick="toggleSkillShow" data-index="{{ forloop.counter }}"><span>&#43; </span>{{ skill.name }}</div>
             <div class="skill-info">
                 <p>{{ skill.description }}</p>
                 {% if skill.get_projects %}

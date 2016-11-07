@@ -4,8 +4,11 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width">
     <title>{{ title }} | Emily Cain, Software Developer</title>
 
-    <link rel="stylesheet" type="text/css" href="{% static 'emcain/css/emcain.css' %}" /></head>
+    <link rel="stylesheet" type="text/css" href="{% static 'emcain/css/emcain.css' %}" />
     <script src="{% static 'emcain/js/navbar.js' %}"></script>
+{% block head %}
+{% endblock %}
+</head>
 <body>
 <ul class="top-navbar">
     {% for key, value in nav.items %}

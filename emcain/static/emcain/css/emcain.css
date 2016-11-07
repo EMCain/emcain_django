@@ -52,6 +52,8 @@ ul.top-navbar {
         display: block;
         text-align: left; } }
 ul.skills-list {
+  -webkit-margin-before: 0;
+  -webkit-padding-start: 0;
   list-style: none; }
   ul.skills-list a {
     color: #283739; }
@@ -64,7 +66,8 @@ ul.skills-list {
     ul.skills-list li .skill-name {
       font-size: 20px; }
       ul.skills-list li .skill-name span {
-        font-weight: bolder; }
+        font-weight: bolder;
+        width: 40px; }
     ul.skills-list li .skill-info {
       display: none; }
       ul.skills-list li .skill-info.show {
