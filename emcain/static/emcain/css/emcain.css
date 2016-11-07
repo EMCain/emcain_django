@@ -3,10 +3,34 @@ body {
   color: #A9C525;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; }
 
-ul {
-  background-color: #228896; }
+a:link {
+  color: #228896; }
+a:visited {
+  color: #48c5d6; }
+a:hover {
+  color: #9cdfe8; }
+a:active {
+  color: #F5F5F5; }
 
-li {
-  outline: solid #F5F5F5 4px; }
+ul.top-navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #228896; }
+  ul.top-navbar li {
+    float: left; }
+    ul.top-navbar li a {
+      display: inline-block;
+      color: #F5F5F5;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 17px; }
+      ul.top-navbar li a:hover {
+        background-color: #19626c; }
+    ul.top-navbar li.icon {
+      display: none; }
 
 /*# sourceMappingURL=emcain.css.map */

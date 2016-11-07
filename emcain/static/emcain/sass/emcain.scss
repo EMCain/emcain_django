@@ -10,17 +10,60 @@ $outline-color: #F5F5F5;
 $outline-thickness: 4px;
 
 
+// navbar - based loosely on http://www.w3schools.com/howto/howto_js_topnav.asp
+
+$top-navbar-margin: 0;
+$top-navbar-padding: 0;
+$navbar-transition: 0.3s;
+$navbar-font-size: 17px;
+
+
 body {
   background-color: $bg-color;
   color: $main-text-color;
   font-family: $main-font-family;
 }
 
-ul {
+a {
+  &:link {
+    color: $emphasis-color;
+  }
+  &:visited {
+    color: lighten($emphasis-color, 20%);
+  }
+  &:hover {
+    color: lighten($emphasis-color, 40%);
+  }
+  &:active {
+    color: $outline-color;
+  }
+}
+
+ul.top-navbar {
+  list-style-type: none;
+  margin: $top-navbar-margin;
+  padding: $top-navbar-padding;
+  overflow: hidden;
   background-color: $emphasis-color;
-}
 
-li {
-  outline: solid $outline-color $outline-thickness;
-}
+  li {
+    float: left;
+    a {
+      display: inline-block;
+      color: $outline-color;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      transition: $navbar-transition;
+      font-size: $navbar-font-size;
 
+      &:hover {
+        background-color: darken($emphasis-color, 10%);
+      }
+    }
+    &.icon {
+      display: none;
+    }
+  }
+
+}
