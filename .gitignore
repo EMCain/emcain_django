@@ -4,6 +4,7 @@ db.sqlite3
 emcain/migrations/*
 .idea/*
 
+
 # thanks to github.com/github/gitignore
 
  Byte-compiled / optimized / DLL files
