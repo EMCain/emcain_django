@@ -1,10 +1,8 @@
 from django.core.urlresolvers import resolve
 from django.http import HttpRequest
-from django.test import TestCase, RequestFactory
+from django.test import TestCase
 
-from emcain.views import index, portfolio, project
-
-from emcain.models import Project, ProjectSkill, Skill
+from emcain.views import index, portfolio
 
 # tests for emcain.views:
 
@@ -40,3 +38,4 @@ class PortfolioTest(TestCase):
         self.assertIn(b'<title>Portfolio' + title_base + b'</title>', response.content)
         self.assertIn(b'<ul>', response.content)
         self.assertTrue(response.content.endswith(b'</html>'))
+
