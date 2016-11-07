@@ -65,5 +65,34 @@ ul.top-navbar {
       display: none;
     }
   }
+}
 
+@media screen and (max-width: 680px){
+  ul.top-navbar {
+    li {
+      &:not(:first-child) {
+        display:none
+      }
+      &.icon {
+        float: right;
+        display: inline-block;
+      }
+    }
+    &.responsive {
+      position: relative;
+      li {
+        float: none;
+        display: inline;
+        &.icon {
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+        a {
+          display: block;
+          text-align: left;
+        }
+      }
+    }
+  }
 }

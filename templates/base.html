@@ -3,17 +3,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width">
     <title>{{ title }} | Emily Cain, Software Developer</title>
 
     <link rel="stylesheet" type="text/css" href="{% static 'emcain/css/emcain.css' %}" /></head>
+    <script src="{% static 'emcain/js/navbar.js' %}"></script>
 <body>
 <ul class="top-navbar">
     {% for key, value in nav.items %}
         <li><a href="{{ value }}">{{ key }}</a></li>
     {% endfor %}
     <li class="icon">
-        <a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
+        <a href="javascript:void(0);" onclick="toggleNav()">&#9776;</a>
     </li>
 </ul>
 <h1>

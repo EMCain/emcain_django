@@ -33,4 +33,23 @@ ul.top-navbar {
     ul.top-navbar li.icon {
       display: none; }
 
+@media screen and (max-width: 680px) {
+  ul.top-navbar li:not(:first-child) {
+    display: none; }
+  ul.top-navbar li.icon {
+    float: right;
+    display: inline-block; }
+  ul.top-navbar.responsive {
+    position: relative; }
+    ul.top-navbar.responsive li {
+      float: none;
+      display: inline; }
+      ul.top-navbar.responsive li.icon {
+        position: absolute;
+        right: 0;
+        top: 0; }
+      ul.top-navbar.responsive li a {
+        display: block;
+        text-align: left; } }
+
 /*# sourceMappingURL=emcain.css.map */
