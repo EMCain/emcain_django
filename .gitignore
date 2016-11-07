@@ -1,8 +1,15 @@
 # custom
 
+# database
 db.sqlite3
 emcain/migrations/*
+
+# pycharm
 .idea/*
+
+# sass
+*.sass-cache*
+*.css.map
 
 
 # thanks to github.com/github/gitignore

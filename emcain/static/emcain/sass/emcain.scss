@@ -1,0 +1,26 @@
+$main-font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+
+// based on http://colorhunt.co/c/42237
+
+$bg-color: #283739;
+$main-text-color: #A9C525;
+$emphasis-color: #228896;
+$outline-color: #F5F5F5;
+
+$outline-thickness: 4px;
+
+
+body {
+  background-color: $bg-color;
+  color: $main-text-color;
+  font-family: $main-font-family;
+}
+
+ul {
+  background-color: $emphasis-color;
+}
+
+li {
+  outline: solid $outline-color $outline-thickness;
+}
+
