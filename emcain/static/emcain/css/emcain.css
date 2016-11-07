@@ -51,5 +51,23 @@ ul.top-navbar {
       ul.top-navbar.responsive li a {
         display: block;
         text-align: left; } }
+ul.skills-list {
+  list-style: none; }
+  ul.skills-list a {
+    color: #283739; }
+  ul.skills-list li {
+    padding: 4px 8px;
+    background-color: #228896;
+    color: #283739; }
+    ul.skills-list li:nth-child(even) {
+      background-color: #A9C525; }
+    ul.skills-list li .skill-name {
+      font-size: 20px; }
+      ul.skills-list li .skill-name span {
+        font-weight: bolder; }
+    ul.skills-list li .skill-info {
+      display: none; }
+      ul.skills-list li .skill-info.show {
+        display: block; }
 
 /*# sourceMappingURL=emcain.css.map */

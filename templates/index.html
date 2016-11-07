@@ -4,15 +4,21 @@
 
     <h2>Software Developer based in Portland, OR</h2>
 
-    <ul>
+    <ul class="skills-list">
         {% for skill in skills %}
-        <li>
-            {{ skill.name }} - {{ skill.description }} | Projects:
-            {% for proj in skill.get_projects %}
-                {% if not forloop.first %},
-                {% endif %}
-                <a href="/projects/{{ proj.id }}">{{ proj.name }}</a>
-            {% endfor %}
+        <li data-index="{{ forloop.counter }}">
+            <div class="skill-name"><span> + </span>{{ skill.name }}</div>
+            <div class="skill-info">
+                <p>{{ skill.description }}</p>
+                {% if skill.get_projects %}
+                <h3>projects:</h3>
+                    {% for proj in skill.get_projects %}
+                        {% if not forloop.first %},
+                        {% endif %}
+                        <a href="/projects/{{ proj.id }}">{{ proj.name }}</a>
+                {% endfor %}
+            {% endif %}
+            </div>
         </li>
         {% endfor %}
     </ul>

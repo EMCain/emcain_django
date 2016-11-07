@@ -17,6 +17,7 @@ $top-navbar-padding: 0;
 $navbar-transition: 0.3s;
 $navbar-font-size: 17px;
 
+// basic page styles
 
 body {
   background-color: $bg-color;
@@ -38,6 +39,8 @@ a {
     color: $outline-color;
   }
 }
+
+// navbar default (full desktop size)
 
 ul.top-navbar {
   list-style-type: none;
@@ -67,6 +70,8 @@ ul.top-navbar {
   }
 }
 
+// navbar mobile/small screen styles
+
 @media screen and (max-width: 680px){
   ul.top-navbar {
     li {
@@ -94,5 +99,36 @@ ul.top-navbar {
         }
       }
     }
+  }
+}
+
+// skills list
+
+
+ul.skills-list {
+  list-style: none;
+  a {
+    color: $bg-color;
+  }
+  li {
+    padding: 4px 8px;
+    background-color: $emphasis-color;
+    color: $bg-color;
+    &:nth-child(even) {
+      background-color: $main-text-color;
+    }
+    .skill-name {
+      font-size: 20px;
+      span {
+        font-weight: bolder;
+      }
+    }
+    .skill-info {
+      display: none;
+      &.show {
+        display: block;
+      }
+    }
+
   }
 }

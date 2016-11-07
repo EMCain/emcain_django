@@ -39,6 +39,9 @@ class ProjectSkill(models.Model):
     project = models.ForeignKey('Project')
     skill = models.ForeignKey('Skill')
 
+    def __str__(self):
+        return self.skill.name + ': ' + self.project.name
+
 class ProjectImage(Entry):
     project = models.ForeignKey('Project')
 
