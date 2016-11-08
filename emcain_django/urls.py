@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^$', views.index),
     url(r'^projects/(?P<project_id>[0-9]+)/$', views.project),
     url(r'^projects/$', views.portfolio),
+    url(r'^contact/$', views.contact),
 ]

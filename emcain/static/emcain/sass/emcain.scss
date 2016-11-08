@@ -134,3 +134,16 @@ ul.skills-list {
     }
   }
 }
+
+// form
+
+$form-padding: 7px 15px 20px;
+
+form {
+  background-color: $emphasis-color;
+  padding: $form-padding;
+  color: $outline-color;
+  label {
+    display: block;
+  }
+}

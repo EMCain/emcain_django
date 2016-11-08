@@ -73,4 +73,11 @@ ul.skills-list {
       ul.skills-list li .skill-info.show {
         display: block; }
 
+form {
+  background-color: #228896;
+  padding: 7px 15px 20px;
+  color: #F5F5F5; }
+  form label {
+    display: block; }
+
 /*# sourceMappingURL=emcain.css.map */
