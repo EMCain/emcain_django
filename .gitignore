@@ -1,5 +1,9 @@
 # custom
 
+# secrets
+
+emcain_django/secrets.py
+
 # database
 db.sqlite3
 emcain/migrations/*
