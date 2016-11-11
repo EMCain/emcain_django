@@ -138,6 +138,8 @@ ul.skills-list {
 // form
 
 $form-padding: 7px 15px 20px;
+$error-color: #dd6666;
+
 
 form {
   background-color: $emphasis-color;
@@ -145,5 +147,11 @@ form {
   color: $outline-color;
   label {
     display: block;
+    margin-top: 15px;
+  }
+  .errorlist {
+    font-weight: bold;
+    color: $main-text-color;
   }
 }
+

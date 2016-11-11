@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.mail import EmailMessage
 from django.shortcuts import render, redirect
 from django.template import Context
@@ -6,6 +7,7 @@ from django.template.loader import get_template
 from random import choice
 
 from .forms import ContactForm
+from .helpers import recaptcha_verify
 from .models import *
 
 nav = {'home': '/', 'portfolio': '/projects', 'contact': '/contact'}
@@ -29,12 +31,18 @@ def project(request, project_id):
 # contact form
 def contact(request):
     form_class = ContactForm
+    form = form_class()
 
     phrases = ['make it so', 'engage', 'energize']
     submit_phrase = choice(phrases)
 
+    errors = {}
+
     if request.method == 'POST':
-        form = form_class(data=request.POST)
+        data = request.POST
+        rcverify = recaptcha_verify(request)
+
+        form = form_class(data=data, captcha_valid=rcverify)
 
         if form.is_valid():
             contact_name = request.POST.get('contact_name', '')
@@ -62,5 +70,9 @@ def contact(request):
             )
             email.send()
             return redirect('/contact')
+        else:
+            print(form.errors)
+            errors = form.errors
 
-    return render(request, 'contact.html', context={'form': form_class, 'nav': nav, 'title': 'Contact Me', 'submit_phrase': submit_phrase})
+
+    return render(request, 'contact.html', context={'form': form, 'nav': nav, 'title': 'Contact Me', 'submit_phrase': submit_phrase, 'recaptcha_key': settings.RECAPTCHA_PUBLIC_KEY})

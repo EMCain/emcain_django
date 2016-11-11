@@ -78,6 +78,10 @@ form {
   padding: 7px 15px 20px;
   color: #F5F5F5; }
   form label {
-    display: block; }
+    display: block;
+    margin-top: 15px; }
+  form .errorlist {
+    font-weight: bold;
+    color: #A9C525; }
 
 /*# sourceMappingURL=emcain.css.map */
