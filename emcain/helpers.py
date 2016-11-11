@@ -10,7 +10,6 @@ def get_client_ip(request):
 
 def recaptcha_verify(request):
 
-    # grab the relevant values from request
     if request.method == 'POST':
         response = {}
         data =  request.POST
@@ -23,9 +22,9 @@ def recaptcha_verify(request):
         }
 
         verify_rs =  requests.get(url, params=params, verify=True)
+
+        print(verify_rs)
         verify_rs_json = verify_rs.json()
 
-        response['status'] = verify_rs_json.get('success', False)
-        response['message'] = verify_rs_json.get('error-codes', None) or 'Unspecified error.'
-
-    pass
+        return verify_rs_json['success']
+    
