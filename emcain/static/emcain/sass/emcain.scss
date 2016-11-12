@@ -149,7 +149,7 @@ form {
     display: block;
     margin-top: 15px;
   }
-  .errorlist {
+  .errorlist, .messages {
     font-weight: bold;
     color: $main-text-color;
   }

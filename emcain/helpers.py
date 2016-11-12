@@ -27,4 +27,3 @@ def recaptcha_verify(request):
         verify_rs_json = verify_rs.json()
 
         return verify_rs_json['success']
-    

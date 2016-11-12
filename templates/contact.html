@@ -6,8 +6,19 @@
 
 {% block content %}
 
+
     <form role="form" action="" method="post">
         {% csrf_token %}
+
+
+        {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+
         {%  for field in form %}
             <label>{{ field.label }}{{ field.errors }}</label>
             {{ field }}

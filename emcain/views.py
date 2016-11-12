@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.shortcuts import render, redirect
 from django.template import Context
@@ -36,13 +37,21 @@ def contact(request):
     phrases = ['make it so', 'engage', 'energize']
     submit_phrase = choice(phrases)
 
-    errors = {}
+    context = {
+        'form': form,
+        'nav': nav,
+        'title': 'Contact Me',
+        'submit_phrase': submit_phrase,
+        'recaptcha_key': settings.RECAPTCHA_PUBLIC_KEY
+    }
 
     if request.method == 'POST':
         data = request.POST
         rcverify = recaptcha_verify(request)
 
         form = form_class(data=data, captcha_valid=rcverify)
+
+
 
         if form.is_valid():
             contact_name = request.POST.get('contact_name', '')
@@ -53,13 +62,13 @@ def contact(request):
 
             template = get_template('contact_template.txt')
 
-            context = Context({
+            submitted_context = Context({
                 'contact_name': contact_name,
                 'contact_email': contact_email,
                 'form_content': form_content,
             })
 
-            content = template.render(context)
+            content = template.render(submitted_context)
 
             email = EmailMessage(
                 'New contact form submission',
@@ -69,10 +78,13 @@ def contact(request):
                 headers = {'Reply-To': contact_email }
             )
             email.send()
-            return redirect('/contact')
+
+            messages.success(request, 'Thank you for your message! I\'ll get back to you as soon as possible.')
+            return render(request, 'contact.html', context=context)
         else:
-            print(form.errors)
-            errors = form.errors
+            context['form'] = form
+            messages.error(request, 'Please correct any errors and try again.')
 
 
-    return render(request, 'contact.html', context={'form': form, 'nav': nav, 'title': 'Contact Me', 'submit_phrase': submit_phrase, 'recaptcha_key': settings.RECAPTCHA_PUBLIC_KEY})
+
+    return render(request, 'contact.html', context=context)

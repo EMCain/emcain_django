@@ -80,7 +80,7 @@ form {
   form label {
     display: block;
     margin-top: 15px; }
-  form .errorlist {
+  form .errorlist, form .messages {
     font-weight: bold;
     color: #A9C525; }
 
