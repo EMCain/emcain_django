@@ -24,6 +24,6 @@ class ContactForm(forms.Form):
 
     def clean(self):
         if not self.captcha_valid:
-            raise(forms.ValidationError('Please prove you\'re not part of the Borg!'))
+            raise(forms.ValidationError('Please prove you\'re a sentient life-form!'))
 
         return self.cleaned_data
