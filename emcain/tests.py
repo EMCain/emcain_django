@@ -2,7 +2,8 @@ from django.core.urlresolvers import resolve
 from django.http import HttpRequest
 from django.test import TestCase
 
-from emcain.views import index, portfolio
+from emcain.views import index, portfolio, contact
+from emcain.forms import ContactForm
 
 # tests for emcain.views:
 
@@ -39,3 +40,20 @@ class PortfolioTest(TestCase):
         self.assertIn(b'<ul>', response.content)
         self.assertTrue(response.content.endswith(b'</html>'))
 
+
+# tests for forms:
+class ContactFormTest(TestCase):
+
+    def test_contact_url_resolves_to_contact_view(self):
+        found = resolve('/contact/')
+        self.assertEqual(found.func, contact)
+
+    def test_form_is_valid_with_good_data(self):
+        form_data = {'contact_name': 'Jean-Luc Picard', 'contact_email': 'picard@starfleet.org', 'content':'Tea. Earl Grey. Hot'}
+        form = ContactForm(data=form_data, captcha_valid=True)
+        self.assertTrue(form.is_valid())
+
+    def test_form_is_not_valid_with_captcha_failing(self):
+        form_data = {'contact_name': 'Jean-Luc Picard', 'contact_email': 'picard@starfleet.org', 'content':'I am Locutus - of Borg. Resistance - is futile.'}
+        form = ContactForm(data=form_data, captcha_valid=False)
+        self.assertFalse(form.is_valid())
