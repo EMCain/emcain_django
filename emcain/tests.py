@@ -54,6 +54,26 @@ class ContactFormTest(TestCase):
         self.assertTrue(form.is_valid())
 
     def test_form_is_not_valid_with_captcha_failing(self):
-        form_data = {'contact_name': 'Jean-Luc Picard', 'contact_email': 'picard@starfleet.org', 'content':'I am Locutus - of Borg. Resistance - is futile.'}
+        form_data = {'contact_name': 'Locutus', 'contact_email': 'picard@starfleet.org', 'content':'I am Locutus - of Borg. Resistance - is futile.'}
         form = ContactForm(data=form_data, captcha_valid=False)
         self.assertFalse(form.is_valid())
+
+    def test_form_is_not_valid_with_invalid_email(self):
+        form_data = {'contact_name': 'Benjamin Sisko', 'contact_email': 'sisko at starfleet dot org', 'content':' You know, Jake, we really need to get away more often.'}
+        form = ContactForm(data=form_data, captcha_valid=True)
+        self.assertFalse(form.is_valid())
+
+
+    def test_form_is_not_valid_with_no_name(self):
+        form_data = {'contact_name': '', 'contact_email': 'info@starfleet.org',
+                     'content': ' Space: The Final Frontier.'}
+        form = ContactForm(data=form_data, captcha_valid=True)
+        self.assertFalse(form.is_valid())
+
+
+    def test_form_is_not_valid_with_no_message(self):
+        form_data = {'contact_name': 'Morn', 'contact_email': 'morn@galacticshipping.com',
+                     'content': ''}
+        form = ContactForm(data=form_data, captcha_valid=True)
+        self.assertFalse(form.is_valid())
+
