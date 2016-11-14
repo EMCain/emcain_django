@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.urlresolvers import resolve
 from django.http import HttpRequest
 from django.test import TestCase
@@ -41,12 +42,25 @@ class PortfolioTest(TestCase):
         self.assertTrue(response.content.endswith(b'</html>'))
 
 
-# tests for forms:
-class ContactFormTest(TestCase):
+class ContactTest(TestCase):
 
     def test_contact_url_resolves_to_contact_view(self):
         found = resolve('/contact/')
         self.assertEqual(found.func, contact)
+
+    def test_contact_page_returns_correct_html(self):
+        request = HttpRequest()
+        response = contact(request)
+
+        self.assertTrue(response.content.startswith(b'<!DOCTYPE html>'))
+        self.assertIn(b'<title>Contact Me' + title_base + b'</title>', response.content)
+        self.assertTrue(response.content.endswith(b'</html>'))
+        self.assertIn(settings.RECAPTCHA_PUBLIC_KEY, response.content)
+
+
+
+# tests for forms:
+class ContactFormTest(TestCase):
 
     def test_form_is_valid_with_good_data(self):
         form_data = {'contact_name': 'Jean-Luc Picard', 'contact_email': 'picard@starfleet.org', 'content':'Tea. Earl Grey. Hot'}
